@@ -34,6 +34,7 @@ With your help we can build a sample app that touches most components of the And
 - CursorAdapter
 - ContentProvider
 - JNI
+- HMAC
 - Material Dialog (like a rate me dialog, https://github.com/afollestad/material-dialogs)
 - Differenet buttons (http://www.google.com/design/spec/components/buttons.html)
 - _Anything else you think worth adding_
