@@ -22,10 +22,10 @@ local.properties
 proguard/
 
 # Intellij project files
-#*.iml
-#*.ipr
-*.iws
-#.idea/
+*.iml
+*.ipr
+.iws
+.idea/
 workspace.xml
 tasks.xml
 
@@ -33,4 +33,4 @@ tasks.xml
 .gradle/
 
 # My note files
-.notes
+*.notes
