@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="dummy_description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lobortis quam metus, sed mattis ex pharetra in. Nam ut arcu maximus ligula facilisis tempor. Nunc gravida justo in rhoncus consectetur. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus purus ligula, placerat at urna ut, fringilla blandit lorem. Fusce nec velit eu purus laoreet varius vel blandit lectus. Nunc cursus felis sed nunc eleifend bibendum. Quisque sed mi eu diam pretium dignissim cursus vitae leo. Suspendisse potenti. Curabitur maximus purus nunc, eu fermentum nulla feugiat non. Nulla vel nisl sed lacus pellentesque ultrices. Nullam elementum augue tortor, quis scelerisque sem commodo congue.
+        \n\n
+        In tempus augue sem, vitae semper ante efficitur vel. Curabitur dictum eget eros vel dignissim. Phasellus dignissim congue augue vel pellentesque. Vivamus mattis malesuada enim at iaculis. Quisque facilisis augue nec felis semper, vel consectetur risus elementum. Vestibulum hendrerit consectetur accumsan. Vivamus nibh nisi, varius a gravida vel, accumsan nec dui. Mauris congue vestibulum dapibus. Donec consectetur imperdiet nisi, vitae dignissim leo. Nullam tristique consectetur commodo. Sed sed gravida nulla. Nulla at maximus ante, a auctor tortor.
+        \n\n
+        Donec non pretium nulla. In molestie faucibus tincidunt. Quisque auctor nisi justo, sit amet fringilla mi mattis vel. Aenean id mattis nibh. Proin tempus ante ac magna vulputate maximus. Vestibulum at venenatis eros. In at arcu sem. Morbi rhoncus in nisl a laoreet. Proin et dignissim diam, sit amet hendrerit nisi. Vestibulum non pulvinar leo. Fusce et ante nisl. Nulla cursus magna augue, eget maximus nisi dignissim commodo. Integer consectetur pharetra malesuada. Donec vel pulvinar nisl, a bibendum purus.
+        \n\n
+        Integer mollis cursus nunc, id feugiat dui mollis sit amet. Duis hendrerit ante augue, ut posuere odio ultrices sit amet. Maecenas quis erat nec augue sollicitudin faucibus sit amet et tortor. Ut euismod sit amet nunc at porta. Praesent vel ex arcu. Phasellus maximus rutrum tincidunt. Ut hendrerit nulla sapien, sit amet rutrum nibh egestas quis. Cras nec augue id dui porttitor imperdiet sed et sem. Maecenas in risus tortor. Proin pulvinar risus sed lectus auctor sollicitudin at ac nisi. Quisque euismod velit quis leo vestibulum, quis porta sem tempor. In cursus felis vel dapibus rhoncus. Vivamus ullamcorper leo a purus cursus, viverra sollicitudin massa sagittis. Donec eu posuere diam.
+        \n\n
+        Suspendisse faucibus justo vitae nisi ornare, vel ornare mauris ultricies. Curabitur dictum ligula vel odio porttitor congue. Aliquam nec arcu laoreet felis ultricies lobortis. Suspendisse potenti. Ut rhoncus eros mi, nec rutrum nisi pulvinar vel. Fusce dignissim ullamcorper lectus. Etiam pulvinar vel quam eget cursus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean ac purus ipsum. Sed ultrices egestas ex vitae laoreet. Vestibulum mi mauris, placerat non metus id, elementum fringilla diam.
+    </string>
+
+</resources>

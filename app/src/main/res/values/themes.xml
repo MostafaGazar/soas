@@ -1,0 +1,16 @@
+<resources>
+
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Set AppCompat’s color theming attrs -->
+        <item name="colorPrimary">@color/material_color_primary</item>
+        <item name="colorPrimaryDark">@color/material_color_primary_dark</item>
+
+    </style>
+
+    <style name="AppTheme" parent="BaseTheme">
+    </style>
+
+    <style name="AppTheme.WithDrawer" parent="AppTheme">
+    </style>
+
+</resources>

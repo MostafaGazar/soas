@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Because AbsListView.LayoutParams does not margin by default. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_item_photo_height"
+    android:descendantFocusability="blocksDescendants">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/list_item_photo_margin_left_right"
+        android:layout_marginRight="@dimen/list_item_photo_margin_left_right"
+        android:layout_marginTop="@dimen/list_item_photo_margin_top"
+        app:cardCornerRadius="@dimen/list_item_photo_corners_radius"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.meg7.soas.ui.view.PhotoView
+                android:id="@+id/photo"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:id="@+id/photoDetailsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/list_item_photo_name_height"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/photoOwner"
+                    style="@style/SingleLineTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="8dp" />
+
+                <TextView
+                    android:id="@+id/photoUploadDate"
+                    style="@style/SingleLineTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+</FrameLayout>

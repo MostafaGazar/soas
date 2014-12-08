@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.meg7.soas.ui.widget.RoundedNetworkImageView
+        android:id="@+id/photo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:corners_radius="@dimen/list_item_photo_corners_radius" />
+
+    <TextView
+        android:id="@+id/photoName"
+        style="@style/SingleLineTextView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_item_photo_name_height"
+        android:layout_gravity="bottom"
+        android:background="@drawable/list_item_photo_name_bg"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/list_item_photo_name_fg" />
+
+</merge>
