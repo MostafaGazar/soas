@@ -185,6 +185,11 @@ public class PhotosListTaskFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mCallbacks = null;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
 
         // Cancel any running Http requests associated with this fragment TAG.
         SoasApplication.cancelPendingRequests(TAG);
