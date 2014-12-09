@@ -41,6 +41,8 @@ public class PhotosListActivity extends BaseActivity
 
     private ActionBarDrawerToggle mDrawerToggle;
 
+    private FragmentManager mFragmentManager;
+
     private PhotosListTaskFragment mPhotosListTaskFragment;
     private PhotosListFragment mPhotosListFragment;
 
@@ -48,7 +50,7 @@ public class PhotosListActivity extends BaseActivity
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
      */
-    private boolean mTwoPane;
+    private boolean mIsTwoPane;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,29 +65,36 @@ public class PhotosListActivity extends BaseActivity
         mDrawerToggle.setDrawerIndicatorEnabled(true);
         drawerLayout.setDrawerListener(mDrawerToggle);
 
-        FragmentManager fragmentManager = getFragmentManager();
+        mFragmentManager = getFragmentManager();
 
-        mPhotosListFragment = (PhotosListFragment) fragmentManager.findFragmentById(R.id.photosList);
+        mPhotosListFragment = (PhotosListFragment) mFragmentManager.findFragmentById(R.id.photosList);
 
         if (findViewById(R.id.photoDetailContainer) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-large and
             // res/values-sw600dp). If this view is present, then the
             // activity should be in two-pane mode.
-            mTwoPane = true;
+            mIsTwoPane = true;
 
             // In two-pane mode, list items should be given the
             // 'activated' state when touched.
             mPhotosListFragment.setActivateOnItemClick(true);
         }
 
+        // Clear Back Stack on recreate.
+        // mFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        // Or do nothing and make onBackPressed is handled normally.
+        if (mIsTwoPane && mFragmentManager.getBackStackEntryCount() > 0) {
+            findViewById(R.id.photosNoItemSelected).setVisibility(View.GONE);
+        }
+
         // Initiate tasks.
-        mPhotosListTaskFragment = (PhotosListTaskFragment) fragmentManager.findFragmentByTag(TAG_TASK_FRAGMENT_PHOTOS_LIST);
+        mPhotosListTaskFragment = (PhotosListTaskFragment) mFragmentManager.findFragmentByTag(TAG_TASK_FRAGMENT_PHOTOS_LIST);
         // If the Fragment is non-null, then it is currently being
         // retained across a configuration change.
         if (mPhotosListTaskFragment == null) {
             mPhotosListTaskFragment = new PhotosListTaskFragment();
-            fragmentManager.beginTransaction().
+            mFragmentManager.beginTransaction().
                     add(mPhotosListTaskFragment, TAG_TASK_FRAGMENT_PHOTOS_LIST).commit();
         } else {
             mPhotosListFragment.setPhotos(
@@ -139,7 +148,7 @@ public class PhotosListActivity extends BaseActivity
      */
     @Override
     public void onItemSelected(View view, Photo photo) {
-        if (mTwoPane) {
+        if (mIsTwoPane) {
             // In two-pane mode, show the detail view in this activity by
             // adding or replacing the detail fragment using a
             // fragment transaction.
@@ -147,7 +156,7 @@ public class PhotosListActivity extends BaseActivity
             arguments.putParcelable(PhotoDetailFragment.ARG_PHOTO, Parcels.wrap(photo));
             PhotoDetailFragment fragment = new PhotoDetailFragment();
             fragment.setArguments(arguments);
-            getFragmentManager().beginTransaction()
+            mFragmentManager.beginTransaction()
                     .replace(R.id.photoDetailContainer, fragment)
                     // Add this transaction to the back stack.
                     .addToBackStack(photo.photoTitle)
@@ -155,10 +164,10 @@ public class PhotosListActivity extends BaseActivity
                     .commit();
 
             findViewById(R.id.photosNoItemSelected).setVisibility(View.GONE);
-            getFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            mFragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
                 @Override
                 public void onBackStackChanged() {
-                    if (getFragmentManager().getBackStackEntryCount() == 0) {
+                    if (mFragmentManager.getBackStackEntryCount() == 0) {
                         findViewById(R.id.photosNoItemSelected).setVisibility(View.VISIBLE);
                     }
                 }
@@ -181,8 +190,8 @@ public class PhotosListActivity extends BaseActivity
 
     @Override
     public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount() > 0 ){
-            getFragmentManager().popBackStack();
+        if (mIsTwoPane && mFragmentManager.getBackStackEntryCount() > 0){
+            mFragmentManager.popBackStack();
         } else {
             super.onBackPressed();
         }
