@@ -1,4 +1,4 @@
-soas (Sample Of All Samples)
+soas (Sample Of All Samples) - [Play Store][0]
 ----
 
 With your help we can build a sample app that touches most components of the Android framework, helpful for beginners and experienced. Your pull-requested are appreciated.
@@ -55,6 +55,7 @@ With your help we can build a sample app that touches most components of the And
 **Developed by:**
 Mostafa Gazar - eng.mostafa.gazar@gmail.com
 
+[0]: https://play.google.com/store/apps/details?id=com.meg7.soas
 [1]: https://github.com/MostafaGazar/Emailer/blob/master/src/com/meg7/emailer/receiver/ConnectivityReceiver.java
 [2]: https://github.com/MostafaGazar/iRacerController/blob/master/source/src/main/java/com/meg7/controller/Deployer.java
 [3]: https://github.com/MostafaGazar/Emailer/blob/master/src/com/meg7/emailer/util/Scheduler.java
