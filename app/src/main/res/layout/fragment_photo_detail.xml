@@ -6,7 +6,7 @@
     android:weightSum="5"
     tools:context=".PhotoDetailFragment">
 
-    <com.android.volley.toolbox.NetworkImageView
+    <com.meg7.soas.ui.widget.RectangleFadeInNetworkImageView
         android:id="@+id/photo"
         android:layout_width="match_parent"
         android:layout_height="0dp"

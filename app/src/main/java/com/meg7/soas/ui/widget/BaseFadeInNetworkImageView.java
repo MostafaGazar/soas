@@ -30,70 +30,29 @@ import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 
 import com.android.volley.toolbox.NetworkImageView;
 import com.meg7.soas.R;
 
 /**
- * Rounded corners NetworkImageView that maintains set scaleType.
+ * Fade-in downloaded image upon download while maintaining the scaleType.
  *
  * @author Mostafa Gazar <eng.mostafa.gazar@gmail.com>
  */
-public class RoundedNetworkImageView extends NetworkImageView {
+public abstract class BaseFadeInNetworkImageView extends NetworkImageView {
 
-    protected Context mContext;
-
-    /**
-     * Notify registered view on Bitmap change events.
-     */
-    private OnBitmapChangeListener mOnBitmapChangeListener;
-
-    /**
-     * Corner radius read from view xml attrs, 0 if not set.
-     */
-    private float mCornersRadius;
-
-    public static interface OnBitmapChangeListener {
-
-        /**
-         * Notify registered view on Bitmap change events.
-         *
-         * @param bitmap New Bitmap.
-         */
-        void onBitmapChange(Bitmap bitmap);
-
-    }
-
-    public RoundedNetworkImageView(Context context) {
+    public BaseFadeInNetworkImageView(Context context) {
         super(context);
-
-        sharedConstructor(context, null);
     }
 
-    public RoundedNetworkImageView(Context context, AttributeSet attrs) {
+    public BaseFadeInNetworkImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
-
-        sharedConstructor(context, attrs);
     }
 
-    public RoundedNetworkImageView(Context context, AttributeSet attrs, int defStyle) {
+    public BaseFadeInNetworkImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-
-        sharedConstructor(context, attrs);
-    }
-
-    private void sharedConstructor(Context context, AttributeSet attrs) {
-        mContext = context;
-
-        if (attrs != null) {
-            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.RoundedNetworkImageView);
-
-            if (a != null) {
-                mCornersRadius = a.getDimension(R.styleable.RoundedNetworkImageView_corners_radius, 0);
-                a.recycle();
-            }
-        }
     }
 
     @Override
@@ -106,7 +65,7 @@ public class RoundedNetworkImageView extends NetworkImageView {
             Drawable[] layers = new Drawable[2];
 
             // Layer 0.
-            layers[0] = res.getDrawable(R.drawable.default_rounded_photo);
+            layers[0] = res.getDrawable(R.drawable.default_photo);
 
             // Layer 1.
             // For masking the Bitmap after scale_type is used.
@@ -117,10 +76,6 @@ public class RoundedNetworkImageView extends NetworkImageView {
             setImageDrawable(transitionDrawable);
             transitionDrawable.startTransition(400);
         }
-
-        if (mOnBitmapChangeListener != null) {
-            mOnBitmapChangeListener.onBitmapChange(bitmap);
-        }
     }
 
     /**
@@ -129,7 +84,7 @@ public class RoundedNetworkImageView extends NetworkImageView {
      * @param bitmap Downloaded Bitmap.
      * @return Clipped Bitmap.
      */
-    private Bitmap clipBitmap(Bitmap bitmap) {
+    protected Bitmap clipBitmap(Bitmap bitmap) {
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
 
@@ -148,7 +103,7 @@ public class RoundedNetworkImageView extends NetworkImageView {
         float absTransX = Math.abs(values[Matrix.MTRANS_X]) * (1 / values[Matrix.MSCALE_X]);
         float absTransY = Math.abs(values[Matrix.MTRANS_Y]) * (1 / values[Matrix.MSCALE_Y]);
         RectF rectF = new RectF(absTransX, absTransY, width - absTransX, height - absTransY);
-        canvas.drawRoundRect(rectF, mCornersRadius, mCornersRadius, paint);
+        drawClipMask(canvas, rectF, paint);
 
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(bitmap, rect, rect, paint);
@@ -156,8 +111,6 @@ public class RoundedNetworkImageView extends NetworkImageView {
         return clippedBitmap;
     }
 
-    public void setOnBitmapChangeListener(OnBitmapChangeListener onBitmapChangeListener) {
-        mOnBitmapChangeListener = onBitmapChangeListener;
-    }
+    protected abstract void drawClipMask(Canvas canvas, RectF rectF, Paint paint);
 
 }

@@ -30,7 +30,7 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.meg7.soas.R;
-import com.meg7.soas.ui.widget.RoundedNetworkImageView;
+import com.meg7.soas.ui.widget.RoundedFadeInNetworkImageView;
 
 /**
  * Custom view for showing RoundedNetworkView and TextView on top of it with Palette used to
@@ -38,12 +38,12 @@ import com.meg7.soas.ui.widget.RoundedNetworkImageView;
  *
  * @author Mostafa Gazar <eng.mostafa.gazar@gmail.com>
  */
-public class PhotoView extends FrameLayout implements RoundedNetworkImageView.OnBitmapChangeListener {
+public class PhotoView extends FrameLayout implements RoundedFadeInNetworkImageView.OnBitmapChangeListener {
 
     @SuppressWarnings("unused")
     private Context mContext;
 
-    private RoundedNetworkImageView mPhoto;
+    private RoundedFadeInNetworkImageView mPhoto;
     private TextView mPhotoName;
 
     public PhotoView(Context context) {
@@ -70,7 +70,7 @@ public class PhotoView extends FrameLayout implements RoundedNetworkImageView.On
         final LayoutInflater inflater = LayoutInflater.from(context);
         inflater.inflate(R.layout.view_photo, this, true);
 
-        mPhoto = (RoundedNetworkImageView) getChildAt(0);
+        mPhoto = (RoundedFadeInNetworkImageView) getChildAt(0);
         mPhoto.setOnBitmapChangeListener(this);
         mPhotoName = (TextView) getChildAt(1);
     }
