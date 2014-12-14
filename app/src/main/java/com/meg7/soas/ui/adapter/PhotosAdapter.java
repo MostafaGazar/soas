@@ -57,6 +57,7 @@ public class PhotosAdapter extends BaseEndlessAdapter<Photo> {
         // Fill data.
         ViewHolder holder = (ViewHolder) view.getTag();
 
+        holder.photo.resetColors();
         holder.photo.setImageUrl(item.photoFileUrl, mImageLoader);
         holder.photo.setText(item.ownerName);
 

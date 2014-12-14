@@ -76,7 +76,7 @@ public class PhotoView extends FrameLayout implements RoundedNetworkImageView.On
     }
 
     /**
-     * Calculate label background and foreground colors using Palette base on downloaded image colors.
+     * Generate label background and foreground colors using Palette base on downloaded image colors.
      *
      * @param bitmap Download bitmap.
      */
@@ -89,10 +89,10 @@ public class PhotoView extends FrameLayout implements RoundedNetworkImageView.On
             public void onGenerated(Palette palette) {
                 Resources res = getResources();
                 int photoNameColorBg = palette.getDarkMutedColor(res.getColor(R.color.list_item_photo_name_bg));
-                int photoNameColorFg = palette.getLightMutedColor(res.getColor(R.color.list_item_photo_name_fg));
+                int photoNameColorFg = palette.getLightMutedColor(res.getColor(R.color.view_photo_name_fg));
 
                 ColorFilter photoNameColorFilter = new LightingColorFilter(photoNameColorBg, 1);
-                Drawable photoNameDrawableBg = res.getDrawable(R.drawable.list_item_photo_name_bg);
+                Drawable photoNameDrawableBg = res.getDrawable(R.drawable.view_photo_name_bg);
                 photoNameDrawableBg.setColorFilter(photoNameColorFilter);
                 mPhotoName.setBackgroundDrawable(photoNameDrawableBg);
 
@@ -105,6 +105,22 @@ public class PhotoView extends FrameLayout implements RoundedNetworkImageView.On
         mPhotoName.setVisibility(GONE);
     }
 
+    /**
+     * Use default photo name background and foreground colors.
+     */
+    public void resetColors() {
+        // Set default backgrounds without using Palette.
+        mPhotoName.setBackgroundResource(R.drawable.view_photo_name_bg);
+        mPhotoName.setTextColor(getResources().getColor(R.color.view_photo_name_fg));
+    }
+
+    /**
+     * Set image url to be requested. Consider calling {@code resetColors()} first in case view was
+     * used in a {@link android.widget.ListView}.
+     *
+     * @param url Image url.
+     * @param imageLoader Image loader queue.
+     */
     public void setImageUrl(String url, ImageLoader imageLoader) {
         mPhoto.setImageUrl(url, imageLoader);
     }

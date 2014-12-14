@@ -8,7 +8,7 @@
 
     <color name="list_item_photo_default">#FFA8A6A6</color>
 
-    <color name="list_item_photo_name_fg">#FFFCFCFC</color>
+    <color name="view_photo_name_fg">#FFFCFCFC</color>
     <color name="list_item_photo_name_bg">#80FEFCFC</color>
 
 </resources>

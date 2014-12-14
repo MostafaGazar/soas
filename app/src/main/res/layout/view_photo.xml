@@ -15,9 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/list_item_photo_name_height"
         android:layout_gravity="bottom"
-        android:background="@drawable/list_item_photo_name_bg"
+        android:background="@drawable/view_photo_name_bg"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/list_item_photo_name_fg" />
+        android:textColor="@color/view_photo_name_fg" />
 
 </merge>
