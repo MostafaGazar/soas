@@ -2,6 +2,7 @@ package com.meg7.soas.ui.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,16 @@ public class PhotoDetailFragment extends Fragment {
     public static final String ARG_PHOTO = "arg_photo";
 
     private Photo mPhoto;
+
+    public static PhotoDetailFragment newInstance(Parcelable photo) {
+        PhotoDetailFragment fragment = new PhotoDetailFragment();
+
+        Bundle arguments = new Bundle();
+        arguments.putParcelable(PhotoDetailFragment.ARG_PHOTO, photo);
+        fragment.setArguments(arguments);
+
+        return fragment;
+    }
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the

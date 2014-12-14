@@ -42,11 +42,8 @@ public class PhotoDetailActivity extends BaseActivity {
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
-            Bundle arguments = new Bundle();
-            arguments.putParcelable(PhotoDetailFragment.ARG_PHOTO,
+            PhotoDetailFragment fragment = PhotoDetailFragment.newInstance(
                     getIntent().getParcelableExtra(PhotoDetailFragment.ARG_PHOTO));
-            PhotoDetailFragment fragment = new PhotoDetailFragment();
-            fragment.setArguments(arguments);
             getFragmentManager().beginTransaction()
                     .add(R.id.photoDetailContainer, fragment)
                     .commit();

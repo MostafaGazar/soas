@@ -152,10 +152,7 @@ public class PhotosListActivity extends BaseActivity
             // In two-pane mode, show the detail view in this activity by
             // adding or replacing the detail fragment using a
             // fragment transaction.
-            Bundle arguments = new Bundle();
-            arguments.putParcelable(PhotoDetailFragment.ARG_PHOTO, Parcels.wrap(photo));
-            PhotoDetailFragment fragment = new PhotoDetailFragment();
-            fragment.setArguments(arguments);
+            PhotoDetailFragment fragment = PhotoDetailFragment.newInstance(Parcels.wrap(photo));
             mFragmentManager.beginTransaction()
                     .replace(R.id.photoDetailContainer, fragment)
                     // Add this transaction to the back stack.
