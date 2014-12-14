@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SOAS (Sample of all samples)</string>
+    <string name="app_name">soas (Sample of all samples)</string>
     <string name="title_photo_detail">Photo Detail</string>
 
     <string name="drawer_open">Open drawer</string>
