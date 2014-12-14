@@ -24,13 +24,14 @@
             android:divider="?android:attr/dividerHorizontal"
             android:orientation="horizontal"
             android:showDividers="middle"
-            tools:context=".RepoListActivity">
+            tools:context=".PhotosListActivity">
 
             <fragment
                 android:id="@+id/photosList"
                 android:name="com.meg7.soas.ui.fragment.PhotosListFragment"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginRight="8dp"
                 android:layout_weight="1"
                 tools:layout="@android:layout/list_content" />
 
@@ -38,6 +39,7 @@
                 android:id="@+id/photoDetailContainer"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
                 android:layout_weight="3">
 
                 <TextView
