@@ -46,12 +46,12 @@ With your help we can build a sample app that touches most components of the And
 **Credits:**
 - Your name!
 
-**Screenshots**
-![1](https://raw.githubusercontent.com/MostafaGazar/soas/master/screens/1.png)
-![2](https://raw.githubusercontent.com/MostafaGazar/soas/master/screens/2.png)
-![3](https://raw.githubusercontent.com/MostafaGazar/soas/master/screens/3.png)
-![4](https://raw.githubusercontent.com/MostafaGazar/soas/master/screens/4.png)
-![5](https://raw.githubusercontent.com/MostafaGazar/soas/master/screens/5.png)
+###Screenshots:###
+![p1](https://raw.githubusercontent.com/MostafaGazar/soas/master/screens/1.png)
+![p2](https://raw.githubusercontent.com/MostafaGazar/soas/master/screens/2.png)
+![p3](https://raw.githubusercontent.com/MostafaGazar/soas/master/screens/3.png)
+![p4](https://raw.githubusercontent.com/MostafaGazar/soas/master/screens/4.png)
+![p5](https://raw.githubusercontent.com/MostafaGazar/soas/master/screens/5.png)
 
 **Useful materials (To start developing for native Android or update your knowledge):**
 - https://developer.android.com/guide/index.html
