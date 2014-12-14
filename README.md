@@ -59,6 +59,10 @@ With your help we can build a sample app that touches most components of the And
 - http://www.vogella.com/tutorials/android.html
 - https://github.com/codepath/android_guides/wiki
 
+
+###Notes:###
+![pFragment](https://dl.dropboxusercontent.com/u/31123652/Android/android_fragment.jpg)
+
 **Developed by:**
 Mostafa Gazar - eng.mostafa.gazar@gmail.com
 
