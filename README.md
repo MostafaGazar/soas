@@ -23,7 +23,7 @@ With your help we can build a sample app that touches most components of the And
 - Gradle product flavors
 - Espresso tests
 
-**Your can help with:**
+**You can help with:**
 - List filter
 - RTL
 - Database
@@ -39,7 +39,7 @@ With your help we can build a sample app that touches most components of the And
 - Bluetooth (check [iRacerController - Deployer.java][2])
 - Scheduling tasks (Check [Emailer - Scheduler.java][3])
 - Material Dialog (like a rate me dialog, https://github.com/afollestad/material-dialogs)
-- Differenet buttons (http://www.google.com/design/spec/components/buttons.html)
+- Different buttons (http://www.google.com/design/spec/components/buttons.html)
 - _Anything else you think worth adding_
 - _Or email me with what you think should be added_
 
