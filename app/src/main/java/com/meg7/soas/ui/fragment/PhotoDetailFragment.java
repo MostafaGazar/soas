@@ -13,6 +13,7 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.meg7.soas.R;
 import com.meg7.soas.SoasApplication;
 import com.meg7.soas.data.Photo;
+import com.meg7.soas.database.OfflineNotesDataSource;
 
 import org.parceler.Parcels;
 
@@ -30,6 +31,8 @@ public class PhotoDetailFragment extends Fragment {
     public static final String ARG_PHOTO = "arg_photo";
 
     private Photo mPhoto;
+
+    private OfflineNotesDataSource mOfflineNotesDataSource;
 
     public static PhotoDetailFragment newInstance(Parcelable photo) {
         PhotoDetailFragment fragment = new PhotoDetailFragment();
@@ -60,6 +63,8 @@ public class PhotoDetailFragment extends Fragment {
                 getActivity().setTitle(mPhoto.photoTitle);
             }
         }
+
+        mOfflineNotesDataSource = new OfflineNotesDataSource(getActivity());
     }
 
     @Override
@@ -80,5 +85,19 @@ public class PhotoDetailFragment extends Fragment {
         }
 
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        mOfflineNotesDataSource.open();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        mOfflineNotesDataSource.close();
     }
 }

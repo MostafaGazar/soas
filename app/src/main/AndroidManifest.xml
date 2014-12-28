@@ -36,6 +36,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.PhotosListActivity" />
         </activity>
+
+        <provider
+            android:name=".database.provider.OfflineNotesProvider"
+            android:authorities="@string/authorities_provider_offline_notes"
+            android:exported="false">
+        </provider>
     </application>
 
 </manifest>
