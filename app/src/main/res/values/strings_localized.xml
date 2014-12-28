@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">soas (Sample of all samples)</string>
+    <string name="title_photo_detail">Photo Detail</string>
+
+    <string name="drawer_open">Open drawer</string>
+    <string name="drawer_close">Close drawer</string>
+
+    <string name="no_network_connection_toast">No network connection found</string>
+
+    <string name="list_no_items_selected">No items selected</string>
+    <string name="list_empty_message">No items</string>
+    <string name="list_last_row_reached">Reached the last row</string>
+
+</resources>
