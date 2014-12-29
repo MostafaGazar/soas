@@ -1,18 +1,13 @@
-language: java
-jdk: oraclejdk7
-before_install:
-    # Install base Android SDK and components
-    - sudo apt-get install -qq libstdc++6:i386 lib32z1
-    - export COMPONENTS=build-tools-21.1.2,android-21,sysimg-21,extra-android-m2repository,extra-android-support
-    - curl -L https://raw.github.com/embarkmobile/android-sdk-installer/version-1/android-sdk-installer | bash /dev/stdin --install=$COMPONENTS
-    - source ~/.android-sdk-installer/env
-    - export TERM=dumb # to get clean gradle output
-    # Create and start emulator
-    - android list targets # for debugging
-    - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
-    - emulator -avd Nexus_4_running_5.0 -no-skin -no-audio -no-window &
+language: android
+android:
+  components:
+    - build-tools-21.1.2
 
 before_script:
-    - wait_for_emulator
+  # Create and start emulator
+  - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - ./wait_for_emulator
+
 script:
     - ./gradlew connectedInstrumentTest
