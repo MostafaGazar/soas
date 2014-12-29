@@ -3,6 +3,8 @@ soas (Sample Of All Samples) - [Play Store][0]
 
 With your help we can build a sample app that touches most components of the Android framework, helpful for beginners and experienced. Your pull-requested are appreciated.
 
+[![Build Status](https://travis-ci.org/MostafaGazar/soas.svg)](https://travis-ci.org/MostafaGazar/soas)
+
 **Here's what the project touches so far:**
 - Toolbar
 - Drawer (following the updated Material Design Guidelines)
