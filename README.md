@@ -29,13 +29,12 @@ With your help we can build a sample app that touches most components of the And
 **You can help with:**
 - List filter
 - RTL
-- Database
 - More tests
 - Receiver (Check [Emailer - ConnectivityReceiver.java][1])
 - Service
 - Loader
 - CursorAdapter
-- ContentProvider
+- C2DM
 - JNI
 - HMAC
 - SSL
