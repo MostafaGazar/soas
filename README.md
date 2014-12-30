@@ -24,6 +24,7 @@ With your help we can build a sample app that touches most components of the And
 - Gradle
 - Gradle product flavors
 - Espresso tests
+- Travis CI, Continuous Deployment
 
 **You can help with:**
 - List filter
