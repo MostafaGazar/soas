@@ -43,6 +43,7 @@ public class PhotosListActivityEspressoTest extends ActivityInstrumentationTestC
 
     @MediumTest
     public void testOnPhotoItemClick() {
+        // NOTE :: Re-enable this test.
 //        Espresso.onData(LongListMatchers.withItemContent("item: 5"))
 //                .perform(ViewActions.click());
     }
