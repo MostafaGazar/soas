@@ -70,6 +70,7 @@ android {
 
         release {
             minifyEnabled false
+            // minifyEnabled true
             // proguardFiles = ['proguard.cfg']
             // signingConfig signingConfigs.release
         }
