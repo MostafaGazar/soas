@@ -1,7 +1,7 @@
 language: android
 
 # Turning off caching to avoid caching Issues
-cache: false
+# cache: false
 # Using the new Container-Based Infrastructure
 sudo: false
 
