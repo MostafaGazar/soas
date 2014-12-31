@@ -24,8 +24,8 @@ android {
         applicationId "com.meg7.soas"
         testApplicationId "com.meg7.soas.tests"
 
-        versionCode 2
-        versionName "1.1"
+        versionCode 3
+        versionName "1.2"
 
         testInstrumentationRunner "com.google.android.apps.common.testing.testrunner.GoogleInstrumentationTestRunner"
     }
@@ -48,12 +48,12 @@ android {
     productFlavors {
         demo {
             applicationId "com.meg7.soas.demo"
-            versionName "1.1d"
+            versionName "1.2d"
         }
 
         full {
             applicationId "com.meg7.soas"
-            versionName "1.1"
+            versionName "1.2"
         }
     }
 
