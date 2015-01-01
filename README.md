@@ -60,6 +60,7 @@ With your help we can build a sample app that touches most components of the And
 - http://www.google.com/design/spec/material-design/introduction.html
 - http://www.vogella.com/tutorials/android.html
 - https://github.com/codepath/android_guides/wiki
+- http://restcookbook.com/Basics/loggingin/
 
 
 ###Notes:###
