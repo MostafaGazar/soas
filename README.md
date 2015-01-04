@@ -1,7 +1,7 @@
 soas (Sample Of All Samples) - [Play Store][0]
 ----
 
-With your help we can build a sample app that touches most components of the Android framework, helpful for beginners and experienced. Your pull-requested are appreciated.
+Native Android samples for beginners and experienced, 14+, with focus on Lollipop and Material.
 
 [![Build Status](https://travis-ci.org/MostafaGazar/soas.svg)](https://travis-ci.org/MostafaGazar/soas)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-soas-brightgreen.svg?style=flat)](https://android-arsenal.com/details/3/1305)
@@ -26,6 +26,8 @@ With your help we can build a sample app that touches most components of the And
 - Gradle product flavors
 - Espresso tests
 - Travis CI, Continuous Deployment
+
+With your help we can build a sample app that touches most components of the Android framework, helpful for beginners and experienced, simply a reference project. Your pull-requests are appreciated.
 
 **You can help with:**
 - List filter
