@@ -2,6 +2,7 @@ package com.meg7.soas.ui;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.meg7.soas.R;
+import com.meg7.soas.accounts.AccountViewActivity;
 import com.meg7.soas.data.Photo;
 import com.meg7.soas.data.Photos;
 import com.meg7.soas.ui.fragment.PhotoDetailFragment;
@@ -25,11 +27,11 @@ import org.parceler.Parcels;
  * lead to a {@link PhotoDetailActivity} representing
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
- * <p>
+ * <p/>
  * The activity makes heavy use of fragments. The list of items is a
  * {@link com.meg7.soas.ui.fragment.PhotosListFragment} and the item details
  * (if present) is a {@link com.meg7.soas.ui.fragment.PhotoDetailFragment}.
- * <p>
+ * <p/>
  * This activity also implements the required
  * {@link com.meg7.soas.ui.fragment.PhotosListFragment.Callbacks} interface
  * to listen for item selections.
@@ -103,7 +105,7 @@ public class PhotosListActivity extends BaseActivity
         }
 
         // TODO: If exposing deep links into your app, handle intents here.
-
+        //startActivity(new Intent(this, AccountViewActivity.class));
     }
 
     @Override
@@ -155,7 +157,7 @@ public class PhotosListActivity extends BaseActivity
             PhotoDetailFragment fragment = PhotoDetailFragment.newInstance(Parcels.wrap(photo));
             mFragmentManager.beginTransaction()
                     .replace(R.id.photoDetailContainer, fragment)
-                    // Add this transaction to the back stack.
+                            // Add this transaction to the back stack.
                     .addToBackStack(photo.photoTitle)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                     .commit();
@@ -187,7 +189,7 @@ public class PhotosListActivity extends BaseActivity
 
     @Override
     public void onBackPressed() {
-        if (mIsTwoPane && mFragmentManager.getBackStackEntryCount() > 0){
+        if (mIsTwoPane && mFragmentManager.getBackStackEntryCount() > 0) {
             mFragmentManager.popBackStack();
         } else {
             super.onBackPressed();
@@ -206,4 +208,18 @@ public class PhotosListActivity extends BaseActivity
         }
     }
 
+
+    /**
+     * Method added to launch necessary action
+     * as per SideMenu Click
+     */
+    public void onSideMenuClick(View view) {
+        switch (view.getId()) {
+            case R.id.txt_photolist:
+                break;
+            case R.id.txt_accountmanagerdemo:
+                startActivity(new Intent(this, AccountViewActivity.class));
+                break;
+        }
+    }
 }

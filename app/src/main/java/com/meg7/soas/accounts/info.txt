@@ -1,0 +1,27 @@
+Logic Implementation
+
+1: Sign In/Sign Up  Activity (AuthActivity) must extend AccountAuthenticatorActivity, as this activity is launched
+whenever Add Account action is called from anywhere
+2: AuthActivity is called from AccountAuthenticator class , where there are different methods for different
+account action. These methods are to be defined by ourselves as per our need
+3: AccountAuthenticator class is called from AccountAuthenticatorService, whenever Add Account action or
+action related to Accounts is called
+   So Add Account Action Called --> AccountAuthenticatorService listens --> AccountAuthenticator class
+   is called --> AuthActivity is called
+
+4: For all these classes to function properly, it should  be defined on manifest file along with xml/
+  account_authenticator.xml
+
+5: SoasAccountManager is a simple class which lists all the accounts,delete all the accounts
+   and add User to the account
+
+   Sites with more implementation of AccountManager
+
+   http://www.fussylogic.co.uk/blog/?p=1035
+   http://udinic.wordpress.com/2013/04/24/write-your-own-android-authenticator/
+   https://github.com/chrisbanes/philm/tree/master/app/src/main/java/app/philm/in/account
+   https://alandjackson.wordpress.com/2011/01/05/android-tutorial-snippetsauthenticating-accounts/
+   http://www.jiahaoliuliu.com/2012/05/android-account-manager-part-i.html
+   http://developer.android.com/training/sync-adapters/creating-authenticator.html#DeclareAuthenticator
+   http://alvinalexander.com/java/jwarehouse/apps-for-android/SampleSyncAdapter/src/com/example/android/samplesync/authenticator/Authenticator.java.shtml
+   https://gitorious.org/rowboat/development/source/00bf0f0296b6691a9ed93fa46eccf316f7b0222e:samples/SampleSyncAdapter/src/com/example/android/samplesync/authenticator/Authenticator.java
