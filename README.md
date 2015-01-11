@@ -5,6 +5,7 @@ Native Android samples for beginners and experienced, 14+, with focus on Lollipo
 
 [![Build Status](https://travis-ci.org/MostafaGazar/soas.svg)](https://travis-ci.org/MostafaGazar/soas)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-soas-brightgreen.svg?style=flat)](https://android-arsenal.com/details/3/1305)
+[![Android Weekly](http://img.shields.io/badge/Android%20Weekly-%23134-2CB3E5.svg?style=flat)](http://androidweekly.net/issues/issue-134)
 
 **Here's what the project touches so far:**
 - Toolbar
@@ -49,6 +50,7 @@ With your help we can build a sample app that touches most components of the And
 - _Or email me with what you think should be added_
 
 **Credits:**
+- Santosh Dhakal - sanimap@gmail.com, AccountManager
 - Your name!
 
 ###Screenshots:###
