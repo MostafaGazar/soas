@@ -38,6 +38,8 @@ With your help we can build a sample app that touches most components of the And
 - Service
 - Loader
 - CursorAdapter
+- Event Bus
+- Recycler 
 - C2DM
 - JNI
 - HMAC
