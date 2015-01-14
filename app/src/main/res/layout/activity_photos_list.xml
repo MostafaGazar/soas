@@ -22,6 +22,7 @@
             tools:context=".RepoListActivity"
             tools:layout="@android:layout/list_content" />
 
+
     </LinearLayout>
 
     <include layout="@layout/include_drawer" />
