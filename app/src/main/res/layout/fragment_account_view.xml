@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/view_flipper">
+    android:id="@+id/viewFlipper">
 
     <LinearLayout
         android:orientation="vertical"
@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txt_accountinfo"
+            android:id="@+id/accountInfoLbl"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:textSize="16sp"

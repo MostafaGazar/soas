@@ -45,13 +45,21 @@
                 android:value=".ui.PhotosListActivity" />
         </activity>
 
+        <activity
+            android:name="com.meg7.soas.ui.AccountAuthenticatorActivity"
+            android:parentActivityName="com.meg7.soas.ui.PhotosListActivity" />
+
+        <activity
+            android:name="com.meg7.soas.ui.AccountViewActivity"
+            android:parentActivityName="com.meg7.soas.ui.PhotosListActivity" />
+
         <provider
             android:name=".database.provider.OfflineNotesProvider"
             android:authorities="@string/authorities_provider_offline_notes"
-            android:exported="false"></provider>
+            android:exported="false" />
 
         <!-- These must be declared as any action related intent is called following service is spawn off -->
-        <service android:name="com.meg7.soas.accounts.AccountAuthenticatorService">
+        <service android:name="com.meg7.soas.account.AccountAuthenticatorService">
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator" />
             </intent-filter>
@@ -61,8 +69,6 @@
                 android:resource="@xml/account_authenticator" />
         </service>
 
-        <activity android:name=".accounts.AuthActivity" />
-        <activity android:name=".accounts.AccountViewActivity" />
     </application>
 
 

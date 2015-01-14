@@ -8,6 +8,6 @@ public class User {
     public String email;
     public String authToken;
     public String name;
-    public String uname;
+    public String username;
     
 }

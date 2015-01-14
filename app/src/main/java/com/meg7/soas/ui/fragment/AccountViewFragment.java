@@ -14,9 +14,9 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.meg7.soas.R;
-import com.meg7.soas.accounts.SoasAccountManager;
-import com.meg7.soas.accounts.User;
-import com.meg7.soas.ui.AccountAuthActivity;
+import com.meg7.soas.account.SoasAccountManager;
+import com.meg7.soas.data.User;
+import com.meg7.soas.ui.AccountAuthenticatorActivity;
 
 /**
  * A simple Fragment which shows the Account Information if created
@@ -32,18 +32,18 @@ public class AccountViewFragment extends Fragment implements View.OnClickListene
 
     private static final String TAG = AccountViewFragment.class.getSimpleName();
 
-    ViewFlipper viewFlipper;
-    TextView txtAccountInfo;
-    boolean isUserLoggedIn = false;
-    SoasAccountManager soasAccountManager;
-    AccountManager accountManager;
+    private boolean mIsUserLoggedIn;
+    private SoasAccountManager mAccountManager;
+
+    private ViewFlipper mViewFlipper;
+    private TextView mAccountInfoLbl;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_account_view, container, false);
-        viewFlipper = (ViewFlipper) view.findViewById(R.id.view_flipper);
+        mViewFlipper = (ViewFlipper) view.findViewById(R.id.viewFlipper);
 
-        txtAccountInfo = (TextView) view.findViewById(R.id.txt_accountinfo);
+        mAccountInfoLbl = (TextView) view.findViewById(R.id.accountInfoLbl);
         view.findViewById(R.id.btn_addAccount).setOnClickListener(this);
         view.findViewById(R.id.btn_deleteAccount).setOnClickListener(this);
         return view;
@@ -52,8 +52,7 @@ public class AccountViewFragment extends Fragment implements View.OnClickListene
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        accountManager = AccountManager.get(getActivity());
-        soasAccountManager = new SoasAccountManager(accountManager);
+        mAccountManager = new SoasAccountManager(AccountManager.get(getActivity()));
         switchViews();
     }
 
@@ -62,18 +61,18 @@ public class AccountViewFragment extends Fragment implements View.OnClickListene
      * else show button to add account.
      */
     private void switchViews() {
-        isUserLoggedIn = AccountAuthActivity.isUserLoggedIn(getActivity());
-        int displayChildIndex = viewFlipper.getDisplayedChild();
-        if (isUserLoggedIn) {
+        mIsUserLoggedIn = AccountAuthenticatorActivity.isUserLoggedIn(getActivity());
+        int displayChildIndex = mViewFlipper.getDisplayedChild();
+        if (mIsUserLoggedIn) {
             if (displayChildIndex == 1) {
-                viewFlipper.showPrevious();
+                mViewFlipper.showPrevious();
             }
 
-            User user = soasAccountManager.getCurrentUser();
+            User user = mAccountManager.getCurrentUser();
             if (user != null) {
                 StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.append("UserName : ")
-                        .append(user.uname)
+                        .append(user.username)
                         .append("\n")
                         .append("Email : ")
                         .append(user.email)
@@ -83,23 +82,24 @@ public class AccountViewFragment extends Fragment implements View.OnClickListene
                         .append("\n")
                         .append("AuthToken : ")
                         .append(user.authToken);
-                txtAccountInfo.setText(stringBuilder.toString());
+                mAccountInfoLbl.setText(stringBuilder.toString());
             }
         } else if (displayChildIndex == 0) {
-            viewFlipper.showNext();
+            mViewFlipper.showNext();
         }
     }
 
     /**
      * This method will create an Account, it will:
-     * 1: Call AccountAuthenticatorService
-     * 2: AccountAuthenticatorService will call AccountAuthenticator
+     * 1: Call AccountAuthenticatorService.
+     * 2: AccountAuthenticatorService will call AccountAuthenticator.
      * 3: AccountAuthenticator addAccount method is called and on AccountAuthenticator addAccount method
-     * we have launched an AuthActivity which contains sign in or sign up form
+     * we have launched an AuthActivity which contains sign in or sign up form.
      */
     private void addAccount() {
         Bundle params = new Bundle();
-        params.putBoolean(AccountAuthActivity.CALL_FROM_ADD_ACCOUNT, true);
+        params.putBoolean(AccountAuthenticatorActivity.EXTRA_IS_CALL_FROM_ADD_ACCOUNT, true);
+        AccountManager accountManager = AccountManager.get(getActivity());
         accountManager.addAccount(SoasAccountManager.ACCOUNT_TYPE,
                 SoasAccountManager.ACCOUNT_AUTH_TYPE, null, params, getActivity(),
                 new AccountManagerCallback<Bundle>() {
@@ -107,27 +107,26 @@ public class AccountViewFragment extends Fragment implements View.OnClickListene
                     @Override
                     public void run(AccountManagerFuture<Bundle> future) {
                         try {
-                            Bundle bnd = future.getResult();
-                            Log.i(TAG, "AddNewAccount Bundle is " + bnd);
+                            Bundle bundle = future.getResult();
+                            Log.i(TAG, "AddNewAccount Bundle is " + bundle);
                             switchViews();
 
                         } catch (Exception e) {
                             e.printStackTrace();
                             Log.e(TAG, "Error Creating Account");
                         }
-
                     }
                 }, null);
     }
 
     /**
      * Method which will delete our
-     * 1: Our added Account
-     * 2: Delete all Accounts
-     * 3: Changes Views
+     * 1: Our added Account.
+     * 2: Delete all Accounts.
+     * 3: Changes Views.
      */
     private void deleteAccount() {
-        soasAccountManager.removeAllAccounts();
+        mAccountManager.removeAllAccounts();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -148,4 +147,5 @@ public class AccountViewFragment extends Fragment implements View.OnClickListene
                 break;
         }
     }
+
 }

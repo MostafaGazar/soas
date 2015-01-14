@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/include_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <fragment
+        android:name="com.meg7.soas.ui.fragment.AccountViewFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="com.meg7.soas.accounts.AccountViewFragment" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>

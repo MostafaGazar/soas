@@ -19,7 +19,7 @@ public class SoasAccountManager {
      * must be same  as xml/account_authenticator android:accountType
      * It is not necessary that you give your Application package name as done in here,
      * you can give your own AccountType
-     * but keep in mind it should be same value defined on xml/account_authenticator
+     * but keep in mind it should be same value defined on xml/account_authenticator.
      */
     public static final String ACCOUNT_TYPE = "com.meg7.soas";
 
@@ -29,7 +29,7 @@ public class SoasAccountManager {
     public static final String ACCOUNT_AUTH_TYPE = "soas_auth";
     public static final String USER_EMAIL = "email";
     public static final String USER_NAME = "name";
-    public static final String USER_UNAME = "uname";
+    public static final String USER_USERNAME = "username";
     public static final String USER_AUTH_TOKEN = "authToken";
 
     private final AccountManager mAccountManager;
@@ -47,7 +47,7 @@ public class SoasAccountManager {
      * ie. ACCOUNT_TYPE="com.meg7.soas
      * right now we are only taking a single account,but
      * multiple accounts can be created or added
-     * as per the need of the app
+     * as per the need of the app.
      */
     public List<Account> getAccounts() {
         final Account[] accounts = mAccountManager.getAccountsByType(ACCOUNT_TYPE);
@@ -56,13 +56,13 @@ public class SoasAccountManager {
     }
 
     /**
-     * Method to create a new Account
+     * Method to create a new Account.
      */
     public void addAccount(User user) {
 
         Account account = new Account(user.email, ACCOUNT_TYPE);
         Bundle userData = new Bundle();
-        userData.putString(USER_UNAME, user.uname);
+        userData.putString(USER_USERNAME, user.username);
         userData.putString(USER_EMAIL, user.email);
         userData.putString(USER_NAME, user.name);
         userData.putString(USER_AUTH_TOKEN, user.authToken);
@@ -80,8 +80,8 @@ public class SoasAccountManager {
          * there isn't any cached token
          * And lot of other implementation have saved password and accessed
          * password from AccountAuthenticator getAuthToken...
-         * So for right now , we are saving auth token on user data
-         * above*/
+         * So for right now , we are saving auth token on user data above.
+         */
         mAccountManager.setAuthToken(account, user.authToken, ACCOUNT_AUTH_TYPE);
     }
 
@@ -109,7 +109,7 @@ public class SoasAccountManager {
             user = new User();
             user.email = mAccountManager.getUserData(account, USER_EMAIL);
             user.name = mAccountManager.getUserData(account, USER_NAME);
-            user.uname = mAccountManager.getUserData(account, USER_UNAME);
+            user.username = mAccountManager.getUserData(account, USER_USERNAME);
             user.authToken = mAccountManager.getUserData(account, USER_AUTH_TOKEN);
         }
 

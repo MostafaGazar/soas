@@ -6,13 +6,22 @@ import android.support.v7.app.ActionBarActivity;
 import com.meg7.soas.R;
 
 /**
- * Created by laaptu on 1/8/15.
+ * @author Santosh Dhakal
  */
-public class AccountViewActivity extends ActionBarActivity{
+public class AccountViewActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_account_view);
+
+        if (savedInstanceState != null) {
+
+        }
     }
+
+    @Override
+    protected int getLayoutResource() {
+        return R.layout.activity_account_view;
+    }
+
 }

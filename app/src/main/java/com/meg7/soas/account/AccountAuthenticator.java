@@ -9,7 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.meg7.soas.ui.AccountAuthActivity;
+import com.meg7.soas.ui.AccountAuthenticatorActivity;
 
 /**
  * @author Santosh Dhakal
@@ -41,13 +41,12 @@ public class AccountAuthenticator extends AbstractAccountAuthenticator {
     public Bundle addAccount(AccountAuthenticatorResponse response, String accountType, String authTokenType, String[] requiredFeatures, Bundle options) throws NetworkErrorException {
         Bundle reply = new Bundle();
 
-
-        Intent intent = new Intent(mContext, AccountAuthActivity.class);
+        Intent intent = new Intent(mContext, AccountAuthenticatorActivity.class);
         intent.putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, response);
         intent.putExtra(AccountManager.KEY_ACCOUNT_TYPE, accountType);
         intent.putExtra(AccountManager.KEY_AUTHTOKEN, authTokenType);
-        if (options.containsKey(AccountAuthActivity.CALL_FROM_ADD_ACCOUNT)) {
-            intent.putExtra(AccountAuthActivity.CALL_FROM_ADD_ACCOUNT, true);
+        if (options.containsKey(AccountAuthenticatorActivity.EXTRA_IS_CALL_FROM_ADD_ACCOUNT)) {
+            intent.putExtra(AccountAuthenticatorActivity.EXTRA_IS_CALL_FROM_ADD_ACCOUNT, true);
         }
 
         reply.putParcelable(AccountManager.KEY_INTENT, intent);
@@ -63,7 +62,7 @@ public class AccountAuthenticator extends AbstractAccountAuthenticator {
     /**
      * Whenever getAuthToken of AccountManager is called, this
      * method is invoked where you have to implement necessary logic to
-     * to get Auth Token
+     * to get Auth Token.
      */
     @Override
     public Bundle getAuthToken(AccountAuthenticatorResponse response, Account account, String authTokenType, Bundle options) throws NetworkErrorException {

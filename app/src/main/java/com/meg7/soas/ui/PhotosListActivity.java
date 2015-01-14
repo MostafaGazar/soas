@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.meg7.soas.R;
-import com.meg7.soas.accounts.AccountViewActivity;
 import com.meg7.soas.data.Photo;
 import com.meg7.soas.data.Photos;
 import com.meg7.soas.ui.fragment.PhotoDetailFragment;

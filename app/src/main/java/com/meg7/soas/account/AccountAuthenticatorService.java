@@ -10,7 +10,7 @@ import android.os.IBinder;
  */
 public class AccountAuthenticatorService extends Service {
 
-    private static AccountAuthenticator mAccountAuthenticator;
+    private static AccountAuthenticator sAccountAuthenticator;
 
     /**
      * Account creation and other related Action when called in the app
@@ -28,11 +28,11 @@ public class AccountAuthenticatorService extends Service {
     }
 
     private AccountAuthenticator getAccountAuthenticator() {
-        if (mAccountAuthenticator == null) {
-            mAccountAuthenticator = new AccountAuthenticator(this);
+        if (sAccountAuthenticator == null) {
+            sAccountAuthenticator = new AccountAuthenticator(this);
         }
 
-        return mAccountAuthenticator;
+        return sAccountAuthenticator;
     }
 
 }

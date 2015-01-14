@@ -1,12 +1,12 @@
 package com.meg7.soas.ui;
 
-import android.accounts.AccountAuthenticatorActivity;
 import android.accounts.AccountManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -19,80 +19,86 @@ import com.meg7.soas.data.User;
 /**
  * @author Santosh Dhakal
  */
-public class AccountAuthenticatorActivity extends android.accounts.AccountAuthenticatorActivity {
+public class AccountAuthenticatorActivity extends BaseAccountAuthenticatorActivity {
 
-    private SoasAccountManager soasAccountManager;
-    private boolean calledFromAddAccount = false;
-    public static final String CALL_FROM_ADD_ACCOUNT = "callFromAddButton";
+    public static final String EXTRA_IS_CALL_FROM_ADD_ACCOUNT = "isCallFromAddButton";
 
-    private EditText txtName, txtEmail, txtPassword, txtUname;
+    /**
+     * Here you call your server make authentication and receive authentication token
+     * or any other form of server calls for user authentication.
+     * Here We are just assuming that server calls are made and
+     * we have received valid auth token and key.
+     */
+    private final String mAuthToken = "bad18eba1ff45jk7858b8ae88a77fa30";
+
+    private SoasAccountManager mAccountManager;
+    private boolean mIsCalledFromAddAccount;
+
+    private EditText mNameEdtTxt;
+    private EditText mEmailEdtTxt;
+    private EditText mPasswordEdtTxt;
+    private EditText mUsernameEdtTxt;
 
     @Override
-    protected void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
-        soasAccountManager = new SoasAccountManager(AccountManager.get(this));
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mAccountManager = new SoasAccountManager(AccountManager.get(this));
 
         /**
          * Just a simple variable to know whether this
          * activity is called from AccountViewActivity or Fragment
          * so that we won't navigate to HomeDisplay after login i.e
-         * we just simply finish this activity
+         * we just simply finish this activity.
          */
-        calledFromAddAccount = getIntent().hasExtra(CALL_FROM_ADD_ACCOUNT);
+        mIsCalledFromAddAccount = getIntent().hasExtra(EXTRA_IS_CALL_FROM_ADD_ACCOUNT);
         if (isUserLoggedIn(this)) {
             showSuccessLogin();
             return;
         }
 
-        setContentView(R.layout.activity_auth);
         initViews();
     }
 
+    @Override
+    protected int getLayoutResource() {
+        return R.layout.activity_account_authenticator;
+    }
+
     private void initViews() {
-        txtName = (EditText) findViewById(R.id.txt_name);
-        txtEmail = (EditText) findViewById(R.id.txt_email);
-        txtUname = (EditText) findViewById(R.id.txt_uname);
-        txtPassword = (EditText) findViewById(R.id.txt_pwd);
+        mNameEdtTxt = (EditText) findViewById(R.id.txt_name);
+        mEmailEdtTxt = (EditText) findViewById(R.id.txt_email);
+        mUsernameEdtTxt = (EditText) findViewById(R.id.txt_uname);
+        mPasswordEdtTxt = (EditText) findViewById(R.id.txt_pwd);
     }
 
     /**
-     * Method which validates and submits
-     * the inputs from Sign In or Sign Up form
+     * Validate and submit inputs from Sign In or Sign Up form.
      */
     public void validateAndSubmit(View view) {
-        if (isTextEmpty(txtName.getText().toString())) {
-            setError(txtName, "Name can't be empty");
+        if (TextUtils.isEmpty(mNameEdtTxt.getText().toString())) {
+            setError(mNameEdtTxt, "Name can't be empty.");
             return;
         }
 
-        if (isTextEmpty(txtUname.getText().toString())) {
-            setError(txtUname, "Uname can't be empty");
+        if (TextUtils.isEmpty(mUsernameEdtTxt.getText().toString())) {
+            setError(mUsernameEdtTxt, "Username can't be empty.");
             return;
         }
 
-        if (isTextEmpty(txtPassword.getText().toString())) {
-            setError(txtPassword, "Password can't be empty");
+        if (TextUtils.isEmpty(mPasswordEdtTxt.getText().toString())) {
+            setError(mPasswordEdtTxt, "Password can't be empty.");
             return;
         }
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(txtEmail.getText().toString()).matches()) {
-            setError(txtEmail, "Add valid email");
+        if (!Patterns.EMAIL_ADDRESS.matcher(mEmailEdtTxt.getText().toString()).matches()) {
+            setError(mEmailEdtTxt, "Invalid email.");
             return;
         }
 
-        /**
-         * Here you call your server
-         * make authentication and receive authentication token
-         * or any other form of server calls
-         * for user authentication
-         * Here We are just assuming that server calls are made and
-         * we have received valid auth token and key
-         */
-        final String authKey = "bad18eba1ff45jk7858b8ae88a77fa30";
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                authenticationSuccess(authKey);
+                authenticationSuccess(mAuthToken);
             }
         });
     }
@@ -100,27 +106,22 @@ public class AccountAuthenticatorActivity extends android.accounts.AccountAuthen
     /**
      * This method is called when there is login or sign up
      * success and user has the necessary authToken
-     * which needs to be stored
+     * which needs to be stored.
      */
     private void authenticationSuccess(String authToken) {
         User user = new User();
-        user.uname = txtUname.getText().toString();
-        user.name = txtName.getText().toString();
-        user.email = txtEmail.getText().toString();
+        user.username = mUsernameEdtTxt.getText().toString();
+        user.name = mNameEdtTxt.getText().toString();
+        user.email = mEmailEdtTxt.getText().toString();
         user.authToken = authToken;
 
-        /**
-         * We are now creating an account
-         * on Android Account Manager
-         */
-        soasAccountManager.addAccount(user);
+        // Creating an account using Android Account Manager.
+        mAccountManager.addAccount(user);
 
         /**
-         * This method is crucials as it will
-         * notify the calling intent that
-         * account creation has been successful
-         * and passes AUTH_TOKEN on Bundle which can
-         * be received by calling Intent
+         * This method is crucial as it will notify the calling intent that
+         * account creation has been successful and passes AUTH_TOKEN on Bundle which can
+         * be received by calling Intent.
          */
         Bundle callbackResult = new Bundle();
         callbackResult.putString(AccountManager.KEY_ACCOUNT_NAME, user.email);
@@ -129,19 +130,20 @@ public class AccountAuthenticatorActivity extends android.accounts.AccountAuthen
         setAccountAuthenticatorResult(callbackResult);
 
         showSuccessLogin();
-
     }
 
-    private void setError(EditText txt, String errorMsg) {
-        txt.requestFocus();
+    private void setError(EditText view, String errorMsg) {
+        view.requestFocus();
+
         Toast.makeText(this, errorMsg, Toast.LENGTH_SHORT).show();
     }
 
     private void showSuccessLogin() {
-        if (!calledFromAddAccount) {
+        if (!mIsCalledFromAddAccount) {
             Intent intent = new Intent(this, PhotosListActivity.class);
             startActivity(intent);
         }
+
         Toast.makeText(this, "You are logged in", Toast.LENGTH_LONG).show();
         finish();
     }
@@ -158,15 +160,9 @@ public class AccountAuthenticatorActivity extends android.accounts.AccountAuthen
      */
     public static boolean isUserLoggedIn(Context context) {
         User user = new SoasAccountManager(AccountManager.get(context)).getCurrentUser();
-        if (user != null) {
-            return true;
-        }
 
-        return false;
+        return user != null;
     }
 
-    public static boolean isTextEmpty(String text) {
-        return text == null || text.trim().length() == 0;
-    }
 
 }

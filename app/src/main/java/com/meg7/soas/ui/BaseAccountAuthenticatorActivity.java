@@ -35,7 +35,7 @@ import android.os.Bundle;
  * is never set or if it is set to null then error {@link AccountManager#ERROR_CODE_CANCELED}
  * will be called on the response.
  */
-public abstract class BaseAccountAuthenticatorActivity extends Activity {
+public abstract class BaseAccountAuthenticatorActivity extends BaseActivity {
     private AccountAuthenticatorResponse mAccountAuthenticatorResponse = null;
     private Bundle mResultBundle = null;
 
@@ -43,6 +43,7 @@ public abstract class BaseAccountAuthenticatorActivity extends Activity {
      * Set the result that is to be sent as the result of the request that caused this
      * Activity to be launched. If result is null or this method is never called then
      * the request will be canceled.
+     *
      * @param result this is returned as the result of the AbstractAccountAuthenticator request
      */
     public final void setAccountAuthenticatorResult(Bundle result) {
@@ -50,11 +51,12 @@ public abstract class BaseAccountAuthenticatorActivity extends Activity {
     }
 
     /**
-     * Retreives the AccountAuthenticatorResponse from either the intent of the icicle, if the
+     * Retrieves the AccountAuthenticatorResponse from either the intent of the icicle, if the
      * icicle is non-zero.
+     *
      * @param icicle the save instance data of this Activity, may be null
      */
-    protected void onCreate(Bundle icicle) {
+    public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
         mAccountAuthenticatorResponse =
