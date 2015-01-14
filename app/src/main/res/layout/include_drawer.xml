@@ -7,46 +7,8 @@
     android:background="@color/drawer_bg"
     android:fitsSystemWindows="true"
     android:clickable="true"
-    android:orientation="vertical"
     tools:showIn="@layout/activity_photos_list">
 
     <!-- Drawer content -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:clickable="true"
-        android:background="?android:selectableItemBackground"
-        android:text="PhotoList"
-        android:gravity="center_vertical"
-        android:textStyle="bold"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        android:paddingLeft="10dp"
-        android:id="@+id/txt_photolist"
-        android:onClick="onSideMenuClick" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.7px"
-        android:background="@android:color/darker_gray" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:clickable="true"
-        android:background="?android:selectableItemBackground"
-        android:text="AccountManagerDemo"
-        android:gravity="center_vertical"
-        android:textStyle="bold"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        android:paddingLeft="10dp"
-        android:id="@+id/txt_accountmanagerdemo"
-        android:onClick="onSideMenuClick" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.7px"
-        android:background="@android:color/darker_gray" />
 
 </LinearLayout>

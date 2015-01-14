@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<account-authenticator xmlns:android="http://schemas.android.com/apk/res/android"
-    android:accountType="com.meg7.soas"
-    android:icon="@drawable/ic_launcher"
-    android:label="@string/app_name"
-    android:smallIcon="@drawable/ic_launcher" />
-
-    <!-- Keep in mind android:label should be equal @string/app_name ,otherwise
-     your AccountName won't appear on Accounts Section of Phone. This is a crucial part-->
