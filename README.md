@@ -1,4 +1,4 @@
-soas (Sample Of All Samples) - [Play Store][0]
+soas (Sample Of All Samples) - [Try APK][0]
 ----
 
 Native Android samples for beginners and experienced, 14+, with focus on Lollipop and Material.
@@ -79,7 +79,7 @@ With your help we can build a sample app that touches most components of the And
 **Developed by:**
 Mostafa Gazar - eng.mostafa.gazar@gmail.com
 
-[0]: https://play.google.com/store/apps/details?id=com.meg7.soas
+[0]: https://github.com/MostafaGazar/soas/blob/master/debug/app_recent.apk?raw=true
 [1]: https://github.com/MostafaGazar/Emailer/blob/master/src/com/meg7/emailer/receiver/ConnectivityReceiver.java
 [2]: https://github.com/MostafaGazar/iRacerController/blob/master/source/src/main/java/com/meg7/controller/Deployer.java
 [3]: https://github.com/MostafaGazar/Emailer/blob/master/src/com/meg7/emailer/util/Scheduler.java
