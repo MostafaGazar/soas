@@ -77,7 +77,7 @@ With your help we can build a sample app that touches most components of the And
 ![pConcurrency](https://dl.dropboxusercontent.com/u/31123652/Android/android_concurrency.jpg)
 
 **Developed by:**
-Mostafa Gazar - eng.mostafa.gazar@gmail.com
+Mostafa Gazar - mmegazar@gmail.com
 
 [0]: https://github.com/MostafaGazar/soas/blob/master/debug/app_recent.apk?raw=true
 [1]: https://github.com/MostafaGazar/Emailer/blob/master/src/com/meg7/emailer/receiver/ConnectivityReceiver.java
